@@ -5,6 +5,7 @@ import ExpenseForm from './ExpenseForm';
 import ExpensesTable from './ExpensesTable';
 import Values from './Values';
 import { connect } from 'react-redux';
+import { getExpenses } from '../redux/Selectors';
 
 const Container = styled.div`
   display: grid;
@@ -18,8 +19,6 @@ const Container = styled.div`
   margin-right: auto;
 `;
 
-const calculateBalance = (budget, expenses) => budget - expenses;
-
 const App = ({ expenses }) => (
   <Container>
     <BudgetForm />
@@ -30,7 +29,7 @@ const App = ({ expenses }) => (
 );
 
 const mapStateToProps = store => ({
-  expenses: store.expenses,
+  expenses: getExpenses(store),
 });
 
 export default connect(mapStateToProps, null)(App);

@@ -6,7 +6,7 @@ const expenseReducer = (state = [], { type, payload }) => {
       return [payload.expense, ...state];
 
     case types.DELETE_EXPENSE:
-      return state.filter(expense => expense.id !== payload);
+      return state.filter(el => el.id !== payload.id);
 
     default:
       return state;

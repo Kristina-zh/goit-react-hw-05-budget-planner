@@ -2,8 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Value from './Value';
 import { connect } from 'react-redux';
-import { getTotalAmount } from '../redux/expenses/expensesSelectors';
-import { getBudget } from '../redux/budget/budgetSelectors';
+import { getBudget, getTotalAmount, getBalance } from '../redux/Selectors';
 
 const Container = styled.section`
   display: inline-flex;
@@ -22,6 +21,7 @@ const Values = ({ budget, expenses, balance }) => (
 const mapStateToProps = store => ({
   budget: getBudget(store),
   expenses: getTotalAmount(store),
+  balance: getBalance(store),
 });
 
 export default connect(mapStateToProps, null)(Values);

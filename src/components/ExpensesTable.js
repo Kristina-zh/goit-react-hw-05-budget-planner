@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Button from './shared/Button';
 import { connect } from 'react-redux';
 import { deleteExpense } from '../redux/expenses/expensesActions';
+import { getExpenses } from '../redux/Selectors';
 
 const Table = styled.table`
   border-collapse: collapse;
@@ -44,11 +45,11 @@ const ExpensesTable = ({ items, onRemove }) => (
 );
 
 const mapStateToProps = store => ({
-  items: store.expenses,
+  items: getExpenses(store),
 });
 
 const mapDispatchToProps = dispatch => ({
-  onRemove: deleteId => dispatch(deleteExpense(deleteId)),
+  onRemove: id => dispatch(deleteExpense(id)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ExpensesTable);
